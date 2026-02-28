@@ -1,0 +1,2 @@
+export * from './electronicDataInterchangeAPIClassesAutenticacionSesionConsulta';
+export * from './electronicDataInterchangeAPIClassesResponse1ElectronicDataInterchangeAPIClassesAutenticacionSesionConsultaMapaRiesgoAPIVersion1000CultureneutralPublicKeyTokennull';
