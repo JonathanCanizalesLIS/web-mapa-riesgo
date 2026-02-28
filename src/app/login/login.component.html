@@ -1,1 +1,52 @@
-<p>login works!</p>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar Sesión - LISTMS</title>
+
+</head>
+<body>
+
+    <div class="login-card" >
+        
+        <div class="logo-container" >
+            <div style="height: 50%;" fxLayoutAlign="center center">
+                <img src="../assets/img/app/Logo_LISTMS.png" alt="Logo LISTMS" style="width: 80%; margin: 20% 0% 20% 10%">
+            </div>
+        </div>
+
+        <!--
+            <span class="register-text">
+                ¿Aún no tienes una cuenta? <a href="#">¡Regístrate ahora!</a>
+            </span>
+        -->
+
+       <form [formGroup]="loginForm" style="background-color: white; border-radius: 7px;" (ngSubmit)="onSubmit(loginForm)" fxFlex="90" fxFlex.gt-sm="30" fxFlex.sm="60" class="mat-elevation-z6">
+            
+            <div class="input-group">
+                <span class="input-icon">&#9993;</span> 
+                <input type="email" class="form-control" placeholder="Email" formControlName="email" required>
+            </div>
+
+            <div class="input-group">
+                <span class="input-icon">&#128274;</span> 
+                <input type="password" class="form-control" placeholder="Password" formControlName="password" required>
+            </div>
+
+            <div class="checkbox-group">
+                <label class="switch">
+                    <input type="checkbox" formControlName="rememberMe">
+                    <span class="slider round"></span>
+                </label>
+                <span class="checkbox-label">Recordar credenciales</span>
+            </div>
+
+            <button type="submit" class="btn-login">Iniciar Sesión</button>
+
+        </form>
+
+    </div>
+
+</body>
+</html>

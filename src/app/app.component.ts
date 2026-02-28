@@ -1,11 +1,11 @@
 import { Component, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { ApiModule, AuthenticationService, Configuration } from '../../client/api-mapa-riesgo';
-import { environment } from '../environments/environment.prod';
+import {  AuthenticationService } from '../../client/api-mapa-riesgo';
+import { LoginComponent } from './login/login.component';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, LoginComponent],
  
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
@@ -13,17 +13,8 @@ import { environment } from '../environments/environment.prod';
 export class AppComponent {
   title = 'mapa-riesgo-frontend';
 
-  authentication = inject(AuthenticationService);
 
-  authenticated = this.authentication.apiAuthenticationAuthenticatePost("test", "password").subscribe({
-    next: (response) => {
-      console.log("Authenticated successfully:", response);
-    },
-    error: (error) => {
-      console.error("Authentication failed:", error);
-    }
-  })
 
-  
+
 
 }
