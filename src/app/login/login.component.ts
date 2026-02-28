@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AuthenticationService } from '../../../client/api-mapa-riesgo';
+import { Route, Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -14,6 +15,7 @@ export class LoginComponent {
   public loginForm:FormGroup;
   fb = inject(FormBuilder);
   authentication = inject(AuthenticationService);
+  router: Router = inject(Router);
 
 
   constructor() {
@@ -37,6 +39,8 @@ export class LoginComponent {
       next: (response) => {
         console.log("Authenticated successfully:", response);
         this.authentication.configuration.accessToken = response.data?.token; // Guarda el token en el servicio de autenticación
+
+        this.router.navigate(['mapa']);
 
       },
       error: (error) => {
