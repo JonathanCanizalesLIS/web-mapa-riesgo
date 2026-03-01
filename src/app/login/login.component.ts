@@ -24,7 +24,7 @@ export class LoginComponent {
       password: [null, Validators.compose([Validators.required, Validators.minLength(6)])],
       rememberMe: false
     });
-  
+
   }
 
 
@@ -38,10 +38,11 @@ export class LoginComponent {
     const authenticated = this.authentication.apiAuthenticationAuthenticatePost(this.loginForm.value.email, this.loginForm.value.password).subscribe({
       next: (response) => {
         console.log("Authenticated successfully:", response);
-        this.authentication.configuration.accessToken = response.data?.token; // Guarda el token en el servicio de autenticación
-
-        this.router.navigate(['mapa']);
-
+        if (response.data?.token) {
+          this.authentication.configuration.accessToken = response.data.token; // Guarda el token en el servicio de autenticación
+          localStorage.setItem('token', response.data.token);
+          this.router.navigate(['mapa']);
+        }
       },
       error: (error) => {
         console.error("Authentication failed:", error);
